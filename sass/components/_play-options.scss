@@ -1,0 +1,41 @@
+@use '../abstract' as *;
+
+// cpu panel options
+.play-options {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  &__option {
+    width: 80px;
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+  }
+
+  &__img {
+    cursor: pointer;
+    transition: transform 80ms;
+  }
+
+  &__img:hover, &__img:active {
+    transform: scale(1.15);
+  }
+
+}
+
+.cpu-panel {
+
+  .play-options__img {
+    @include bp(sm) {
+      transform: scale(1) scaleX(-1);
+      &:hover {
+        transform: scale(1.2) scaleX(-1);
+
+      }
+    }
+  }
+}

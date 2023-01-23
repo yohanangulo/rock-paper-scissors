@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- css -->
+  <link rel="stylesheet" href="dist/main.css">
+
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <section class="container">
+
+    <div class="game-container">
+
+      <!-- cpu panel -->
+      <div class="cpu-panel">
+        <h3 class="cpu-panel__victories">Winners: <span id="cpu-counter">0</span></h3>
+        <h2 class="cpu-panel__name">CPU</h2>
+        <div class="play-options">
+          <button class="play-options__option"><img class="play-options__img" src="img/rock.svg"></button>
+          <button class="play-options__option"><img class="play-options__img" src="img/paper.svg"></button>
+          <button class="play-options__option"><img class="play-options__img" src="img/scissors.svg"></button>
+        </div>
+      </div>
+
+      <!-- results panel -->
+      <div class="result-panel">
+        <div id="result_container" class="hidden">
+          <h2 class="result-panel__winner">You Win!</h2>
+          <div class="result-panel__result">
+            <img id="user-choice" src="img/scissors.svg" alt="" class="result-panel__img">
+            <h2 class="result-panel__vs">VS</h2>
+            <img id="cpu-choice" src="img/rock.svg" alt="" class="result-panel__img flipped">
+          </div>
+        </div>
+        <!-- start title -->
+        <h2 class="result-panel__title">
+          Choose an option below!
+        </h2>
+      </div>
+      
+      <!-- user panel -->
+      <div class="user-panel">
+        <h3 class="user-panel__victories">Winners: <span id="user-counter">0</span></h3>
+        <h2 class="user-panel__name">YOU</h2>
+        <div class="play-options">
+          <button class="play-options__option" ><img id="rock" class="play-options__img" src="img/rock.svg"></button>
+          <button class="play-options__option" ><img id="paper" class="play-options__img" src="img/paper.svg"></button>
+          <button class="play-options__option" ><img id="scissors" class="play-options__img" src="img/scissors.svg"></button>
+        </div>
+      </div>
+
+      <!-- last matches -->
+      <div class="last-matches">
+        <h2 class="last-matches__title">Last matches:</h2>
+        <ul class="last-matches__log">
+          <!-- <li class="last-matches__item"><img class="last-matches__img" src="img/rock.svg" alt=""><span>VS</span><img class="last-matches__img flipped" src="img/paper.svg" alt=""></li>
+          <li class="last-matches__item"><img class="last-matches__img" src="img/rock.svg" alt=""><span>VS</span><img class="last-matches__img flipped" src="img/paper.svg" alt=""></li>
+          <li class="last-matches__item"><img class="last-matches__img" src="img/rock.svg" alt=""><span>VS</span><img class="last-matches__img flipped" src="img/paper.svg" alt=""></li>
+          <li class="last-matches__item"><img class="last-matches__img" src="img/rock.svg" alt=""><span>VS</span><img class="last-matches__img flipped" src="img/paper.svg" alt=""></li>
+          <li class="last-matches__item"><img class="last-matches__img" src="img/scissors.svg" alt=""><span>VS</span><img class="last-matches__img flipped" src="img/paper.svg" alt=""></li> -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- script -->
+    <script src="main.js"></script>
+
+  </section>
+</body>
+</html>

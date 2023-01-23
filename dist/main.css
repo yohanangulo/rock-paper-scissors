@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+html {
+  font-size: 16px;
+}
+
+img,
+svg,
+video,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  background: url(../img/bg.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.flipped {
+  transform: scaleX(-1);
+}
+
+@media (min-width: 965px) {
+  .game-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.container {
+  padding: 1.5rem;
+}
+
+.play-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.play-options__option {
+  width: 80px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+.play-options__img {
+  cursor: pointer;
+  transition: transform 80ms;
+}
+.play-options__img:hover, .play-options__img:active {
+  transform: scale(1.15);
+}
+
+@media (min-width: 965px) {
+  .cpu-panel .play-options__img {
+    transform: scale(1) scaleX(-1);
+  }
+  .cpu-panel .play-options__img:hover {
+    transform: scale(1.2) scaleX(-1);
+  }
+}
+
+@media (min-width: 965px) {
+  .last-matches {
+    order: 90;
+    min-height: 260px;
+  }
+}
+.last-matches__img {
+  width: 40px;
+}
+.last-matches__item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.last-matches__log {
+  display: flex;
+  flex-direction: column-reverse;
+  max-width: 300px;
+  margin-inline: auto;
+  gap: 10px;
+}
+.last-matches__title {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.cpu-panel, .user-panel {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  max-width: 350px;
+  border-radius: 8px;
+  margin-inline: auto;
+}
+@media (min-width: 965px) {
+  .cpu-panel, .user-panel {
+    flex-grow: 1;
+  }
+}
+.cpu-panel__name, .user-panel__name {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.cpu-panel__victories, .user-panel__victories {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+@media (min-width: 965px) {
+  .cpu-panel {
+    order: 100;
+  }
+}
+
+.user-panel {
+  margin-bottom: 30px;
+}
+@media (min-width: 965px) {
+  .user-panel {
+    margin-bottom: 0;
+    order: 80;
+  }
+}
+
+.result-panel {
+  padding: 2.5rem 0;
+  min-height: 168.188px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 965px) {
+  .result-panel {
+    width: 100%;
+    min-height: 250px;
+  }
+}
+.result-panel__title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+@media (min-width: 965px) {
+  .result-panel__title {
+    font-size: 2rem;
+  }
+}
+.result-panel__result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.result-panel__img {
+  width: 55px;
+}
+.result-panel__winner {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+@media (min-width: 965px) {
+  .result-panel__winner {
+    font-size: 2.5rem;
+  }
+}
+.result-panel__vs {
+  font-size: 1.3rem;
+  font-weight: 600;
+}/*# sourceMappingURL=main.css.map */

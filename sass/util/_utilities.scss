@@ -1,0 +1,13 @@
+@use '../abstract' as *;
+
+.flipped {
+  transform: scaleX(-1);
+}
+
+.game-container {
+  @include bp(sm) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
