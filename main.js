@@ -14,24 +14,21 @@ possibleChoices.forEach((choice) => choice.addEventListener("click", (e) => {
   document.getElementById("cpu-choice").src = `img/${cpuChoice}.svg`;
   document.getElementById("user-choice").src = `img/${userChoice}.svg`;
 
-  if (
-    (userChoice == "rock" && cpuChoice == "paper") ||
-    (userChoice == "paper" && cpuChoice == "scissors") ||
-    (userChoice == "scissors" && cpuChoice == "rock")
-  ) {
-    displayWinner.innerHTML = "CPU Wins!";
-    totalCpurWinners.innerHTML = +totalCpurWinners.innerText + 1;
-  } else if (
-    (userChoice == "rock" && cpuChoice == "scissors") ||
-    (userChoice == "scissors" && cpuChoice == "paper") ||
-    (userChoice == "paper" && cpuChoice == "rock")
-  ) {
-    displayWinner.innerHTML = "You Win!";
-    totaluserWinners.innerHTML = +totaluserWinners.innerText + 1;
-  } else {
-    displayWinner.innerHTML = "Draw!";
+  switch (`${userChoice} ${cpuChoice}`) {
+    case 'rock paper':
+    case 'paper scissors':
+    case 'scissors rock':
+      displayRes('CPU Wins!', totalCpurWinners)
+      break;
+    case 'rock scissors':
+    case 'scissors paper':
+    case 'paper rock':
+      displayRes('You Win!', totaluserWinners)
+      break;
+    default:
+      displayWinner.innerHTML = "Draw!";
   }
-
+  
   const logItem = document.createElement("li");
   logItem.classList.add("last-matches__item");
   logItem.innerHTML = `<img class="last-matches__img" src="img/${userChoice}.svg" alt=""><span>VS</span><img class="last-matches__img flipped" src="img/${cpuChoice}.svg" alt="">`;
@@ -41,3 +38,8 @@ possibleChoices.forEach((choice) => choice.addEventListener("click", (e) => {
   logList.removeChild(logList.getElementsByTagName("li")[0]);
   logList.appendChild(logItem);
 }));
+
+function displayRes(winner, totalWinner) {
+  displayWinner.innerHTML = winner;
+  totalWinner.innerHTML = +totalWinner.innerText + 1;
+}
