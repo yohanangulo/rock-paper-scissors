@@ -83,10 +83,13 @@ body {
     min-height: 260px;
   }
 }
-.last-matches__img {
+.last-matches img {
   width: 40px;
 }
-.last-matches__item {
+.last-matches img:last-child {
+  transform: scaleX(-1);
+}
+.last-matches li {
   display: flex;
   gap: 10px;
   align-items: center;

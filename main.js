@@ -1,13 +1,8 @@
 const $ = selector => document.querySelector(selector)
 
-const displayWinner = $(".result-panel__winner");
-const totaluserWinners = $("#user-counter");
-const totalCpurWinners = $("#cpu-counter");
-const logList = $(".last-matches__log");
-
 document.querySelectorAll(".user-panel .play-options__option").forEach( choice => choice.addEventListener("click", e => {
-  document.querySelector(".result-panel__title").classList.add("hidden");
-  document.getElementById("result_container").classList.remove("hidden");
+  $(".result-panel__title").classList.add("hidden");
+  $("#result_container").classList.remove("hidden");
 
   userChoice = e.target.id; 
   cpuChoice = ["✊🏻", "✋🏻", "✌🏻"][ Math.floor(Math.random() * 3) ]; // cpu choice
@@ -20,13 +15,13 @@ document.querySelectorAll(".user-panel .play-options__option").forEach( choice =
     case "✊🏻 vs ✌🏻":
     case "✌🏻 vs ✋🏻":
     case "✋🏻 vs ✊🏻":
-      return displayResult("You Win!", totaluserWinners);
+      return displayResult("You Win!", $("#user-counter"));
   }
-  displayResult('Cpu Wins!', totalCpurWinners)
+  displayResult('Cpu Wins!', $("#cpu-counter"))
 }));
 
 function displayResult(winner = 'Draw!', totalWinner) {
-  displayWinner.innerHTML = winner;
+  $(".result-panel__winner").innerHTML = winner;
   if (winner == 'Draw!') return addToLog()
   totalWinner.innerHTML = +totalWinner.innerText + 1;
   addToLog()
@@ -34,10 +29,9 @@ function displayResult(winner = 'Draw!', totalWinner) {
 
 function addToLog () {
   const logItem = document.createElement("li");
-  logItem.classList.add("last-matches__item");
-  logItem.innerHTML = `<img class="last-matches__img" src="img/${userChoice}.svg"><span>VS</span><img class="last-matches__img flipped" src="img/${cpuChoice}.svg">`;
-
-  if (logList.getElementsByTagName("li").length != 5) return logList.appendChild(logItem);
-  logList.removeChild(logList.getElementsByTagName("li")[0]);
-  logList.appendChild(logItem);
+  logItem.innerHTML = `<img src="img/${userChoice}.svg"><span>VS</span><img src="img/${cpuChoice}.svg">`;
+  
+  if ($(".last-matches__log").children.length != 5) return $(".last-matches__log").appendChild(logItem);
+  $(".last-matches__log").removeChild( $(".last-matches__log").firstElementChild);
+  $(".last-matches__log").appendChild(logItem);
 }
