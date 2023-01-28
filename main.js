@@ -7,10 +7,10 @@ document.querySelectorAll(".user-panel .play-options__option").forEach( choice =
   userChoice = e.target.id; 
   cpuChoice = ["✊🏻", "✋🏻", "✌🏻"][ Math.floor(Math.random() * 3) ]; // cpu choice
 
-  document.getElementById("cpu-choice").src = `img/${cpuChoice}.svg`;
-  document.getElementById("user-choice").src = `img/${userChoice}.svg`;
+  $("#cpu-choice").src = `img/${cpuChoice}.svg`;
+  $("#user-choice").src = `img/${userChoice}.svg`;
 
-  if (userChoice == cpuChoice) return displayResult()
+  if (userChoice == cpuChoice) return displayResult('Draw!')
   switch (`${userChoice} vs ${cpuChoice}`) {
     case "✊🏻 vs ✌🏻":
     case "✌🏻 vs ✋🏻":
@@ -20,7 +20,7 @@ document.querySelectorAll(".user-panel .play-options__option").forEach( choice =
   displayResult('Cpu Wins!', $("#cpu-counter"))
 }));
 
-function displayResult(winner = 'Draw!', totalWinner) {
+function displayResult(winner, totalWinner) {
   $(".result-panel__winner").innerHTML = winner;
   if (winner == 'Draw!') return addToLog()
   totalWinner.innerHTML = +totalWinner.innerText + 1;
