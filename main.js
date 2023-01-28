@@ -1,45 +1,43 @@
-const possibleChoices = document.querySelector(".user-panel").querySelectorAll(".play-options__option");
-const displayWinner = document.querySelector(".result-panel__winner");
-const totaluserWinners = document.getElementById("user-counter");
-const totalCpurWinners = document.getElementById("cpu-counter");
-const logList = document.querySelector(".last-matches__log");
+const $ = selector => document.querySelector(selector)
 
-possibleChoices.forEach((choice) => choice.addEventListener("click", (e) => {
+const displayWinner = $(".result-panel__winner");
+const totaluserWinners = $("#user-counter");
+const totalCpurWinners = $("#cpu-counter");
+const logList = $(".last-matches__log");
+
+document.querySelectorAll(".user-panel .play-options__option").forEach( choice => choice.addEventListener("click", e => {
   document.querySelector(".result-panel__title").classList.add("hidden");
   document.getElementById("result_container").classList.remove("hidden");
 
-  const userChoice = e.target.id;
-  const cpuChoice = ["rock", "paper", "scissors"][ Math.floor(Math.random() * 3) ]; // cpu choice
+  userChoice = e.target.id; 
+  cpuChoice = ["✊🏻", "✋🏻", "✌🏻"][ Math.floor(Math.random() * 3) ]; // cpu choice
 
   document.getElementById("cpu-choice").src = `img/${cpuChoice}.svg`;
   document.getElementById("user-choice").src = `img/${userChoice}.svg`;
 
-  switch (`${userChoice} ${cpuChoice}`) {
-    case 'rock paper':
-    case 'paper scissors':
-    case 'scissors rock':
-      displayRes('CPU Wins!', totalCpurWinners)
-      break;
-    case 'rock scissors':
-    case 'scissors paper':
-    case 'paper rock':
-      displayRes('You Win!', totaluserWinners)
-      break;
-    default:
-      displayWinner.innerHTML = "Draw!";
+  if (userChoice == cpuChoice) return displayResult()
+  switch (`${userChoice} vs ${cpuChoice}`) {
+    case "✊🏻 vs ✌🏻":
+    case "✌🏻 vs ✋🏻":
+    case "✋🏻 vs ✊🏻":
+      return displayResult("You Win!", totaluserWinners);
   }
-  
-  const logItem = document.createElement("li");
-  logItem.classList.add("last-matches__item");
-  logItem.innerHTML = `<img class="last-matches__img" src="img/${userChoice}.svg" alt=""><span>VS</span><img class="last-matches__img flipped" src="img/${cpuChoice}.svg" alt="">`;
-
-  if (logList.getElementsByTagName("li").length != 5) return logList.appendChild(logItem);
-
-  logList.removeChild(logList.getElementsByTagName("li")[0]);
-  logList.appendChild(logItem);
+  displayResult('Cpu Wins!', totalCpurWinners)
 }));
 
-function displayRes(winner, totalWinner) {
+function displayResult(winner = 'Draw!', totalWinner) {
   displayWinner.innerHTML = winner;
+  if (winner == 'Draw!') return addToLog()
   totalWinner.innerHTML = +totalWinner.innerText + 1;
+  addToLog()
+}
+
+function addToLog () {
+  const logItem = document.createElement("li");
+  logItem.classList.add("last-matches__item");
+  logItem.innerHTML = `<img class="last-matches__img" src="img/${userChoice}.svg"><span>VS</span><img class="last-matches__img flipped" src="img/${cpuChoice}.svg">`;
+
+  if (logList.getElementsByTagName("li").length != 5) return logList.appendChild(logItem);
+  logList.removeChild(logList.getElementsByTagName("li")[0]);
+  logList.appendChild(logItem);
 }
