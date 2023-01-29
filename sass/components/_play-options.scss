@@ -30,6 +30,7 @@
 .cpu-panel {
 
   .play-options__img {
+    cursor: auto;
     @include bp(sm) {
       transform: scale(1) scaleX(-1);
       &:hover {

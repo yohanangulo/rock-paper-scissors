@@ -24,7 +24,8 @@ body {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   text-align: center;
-  background: url(../img/bg.webp);
+  color: #1f1f1f;
+  background: url(../img/bg.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -68,6 +69,9 @@ body {
   transform: scale(1.15);
 }
 
+.cpu-panel .play-options__img {
+  cursor: auto;
+}
 @media (min-width: 965px) {
   .cpu-panel .play-options__img {
     transform: scale(1) scaleX(-1);
@@ -122,6 +126,7 @@ body {
   }
 }
 .cpu-panel__name, .user-panel__name {
+  color: rgba(96, 20, 250, 0.6);
   font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 20px;
